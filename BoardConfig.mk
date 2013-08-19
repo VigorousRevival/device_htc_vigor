@@ -38,6 +38,13 @@ BOARD_KERNEL_CMDLINE := console=ttyHSL3 androidboot.hardware=vigor no_console_su
 TARGET_KERNEL_VERSION := 3.0
 TARGET_KERNEL_CONFIG := vigor_aosp_defconfig
 TARGET_KERNEL_SOURCE := kernel/htc/vigor-$(TARGET_KERNEL_VERSION)
+TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-$(TARGET_GCC_VERSION_ARM)
+
+# Custom Optimizations
+ARCH_ARM_HAVE_VFP := true
+ARCH_ARM_HAVE_NEON := true
+ARCH_ARM_HIGH_OPTIMIZATION := true
+ARCH_ARM_HIGH_OPTIMIZATION_COMPAT := true
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1280
