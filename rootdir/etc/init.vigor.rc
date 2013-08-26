@@ -68,7 +68,7 @@ on early-init
     write /dev/smd_pkt_loopback 1
 
     # Proximity calibration values
-    write /sys/devices/virtual/optical_sensors/proximity/ps_kadc "0x0 0xFFFF0C0C"
+    write /sys/devices/virtual/optical_sensors/proximity/ps_kadc "0x0 0xFFFF3C2D"
 
 on init
     mkdir /devlog 0700 root root
