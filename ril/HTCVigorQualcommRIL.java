@@ -27,7 +27,7 @@ import android.os.Parcel;
 import android.text.TextUtils;
 import android.telephony.CellInfo;
 import android.telephony.SignalStrength;
-import android.util.Log;
+import android.telephony.Rlog;
 
 import com.android.internal.telephony.uicc.IccCardApplicationStatus;
 import com.android.internal.telephony.uicc.IccCardStatus;
@@ -46,14 +46,14 @@ import java.util.ArrayList;
  */
 public class HTCVigorQualcommRIL extends QualcommSharedRIL implements CommandsInterface {
 
-    private static final int RIL_UNSOL_ENTER_LPM = 3023;
-    private static final int RIL_UNSOL_TPMR_ID = 3024;
-    private static final int RIL_UNSOL_CDMA_3G_INDICATOR = 4259;
-    private static final int RIL_UNSOL_CDMA_ENHANCE_ROAMING_INDICATOR = 4262;
-    private static final int RIL_UNSOL_RESPONSE_PHONE_MODE_CHANGE = 4802;
+    private static final int RIL_UNSOL_ENTER_LPM = 1523;
+    private static final int RIL_UNSOL_CDMA_3G_INDICATOR = 3009;
+    private static final int RIL_UNSOL_CDMA_ENHANCE_ROAMING_INDICATOR = 3012;
+    private static final int RIL_UNSOL_CDMA_NETWORK_BASE_PLUSCODE_DIAL = 3020;
+    private static final int RIL_UNSOL_RESPONSE_PHONE_MODE_CHANGE = 6002;
     private static final int RIL_UNSOL_RESPONSE_VOICE_RADIO_TECH_CHANGED = 21004;
-    private static final int RIL_UNSOL_RESPONSE_IMS_NETWORK_STATE_CHANGED = 5755;
-    private static final int RIL_UNSOL_RESPONSE_DATA_NETWORK_STATE_CHANGED = 5757;
+    private static final int RIL_UNSOL_RESPONSE_IMS_NETWORK_STATE_CHANGED = 21005;
+    private static final int RIL_UNSOL_RESPONSE_DATA_NETWORK_STATE_CHANGED = 21007;
 
     public HTCVigorQualcommRIL(Context context, int networkMode, int cdmaSubscription) {
         super(context, networkMode, cdmaSubscription);
@@ -170,9 +170,9 @@ public class HTCVigorQualcommRIL extends QualcommSharedRIL implements CommandsIn
 
         switch(response) {
             case RIL_UNSOL_ENTER_LPM: ret = responseVoid(p); break;
-            case RIL_UNSOL_TPMR_ID: ret = responseVoid(p); break;
             case RIL_UNSOL_CDMA_3G_INDICATOR:  ret = responseInts(p); break;
             case RIL_UNSOL_CDMA_ENHANCE_ROAMING_INDICATOR:  ret = responseInts(p); break;
+            case RIL_UNSOL_CDMA_NETWORK_BASE_PLUSCODE_DIAL:  ret = responseStrings(p); break;
             case RIL_UNSOL_RESPONSE_PHONE_MODE_CHANGE:  ret = responseInts(p); break;
             case RIL_UNSOL_RESPONSE_VOICE_RADIO_TECH_CHANGED: ret = responseVoid(p); break;
             case RIL_UNSOL_RESPONSE_IMS_NETWORK_STATE_CHANGED: ret = responseVoid(p); break;
@@ -189,9 +189,9 @@ public class HTCVigorQualcommRIL extends QualcommSharedRIL implements CommandsIn
 
         switch(response) {
             case RIL_UNSOL_ENTER_LPM:
-            case RIL_UNSOL_TPMR_ID:
             case RIL_UNSOL_CDMA_3G_INDICATOR:
             case RIL_UNSOL_CDMA_ENHANCE_ROAMING_INDICATOR:
+            case RIL_UNSOL_CDMA_NETWORK_BASE_PLUSCODE_DIAL:
             case RIL_UNSOL_RESPONSE_PHONE_MODE_CHANGE:
             case RIL_UNSOL_RESPONSE_VOICE_RADIO_TECH_CHANGED:
             case RIL_UNSOL_RESPONSE_IMS_NETWORK_STATE_CHANGED:
