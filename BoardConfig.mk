@@ -91,3 +91,4 @@ TARGET_RECOVERY_FSTAB := device/htc/vigor/rootdir/etc/fstab.vigor
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 BOARD_RECOVERY_SWIPE := true
+USE_SET_METADATA := false
