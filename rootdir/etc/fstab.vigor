@@ -13,5 +13,5 @@
 /dev/block/mmcblk0p35	/data		ext4	noatime,nosuid,nodev,noauto_da_alloc,barrier=0		wait,encryptable=footer,length=-16384
 
 # SD Card
-/devices/platform/msm_sdcc.1/mmc_host/mmc0	auto	38	defaults		voldmanaged=sdcard0:38,nonremovable,noemulatedsd
+/devices/platform/msm_sdcc.1/mmc_host/mmc0	auto	auto	defaults		voldmanaged=sdcard0:38,nonremovable,noemulatedsd
 /devices/platform/msm_sdcc.3/mmc_host/mmc2	auto	auto	defaults		voldmanaged=sdcard1:auto,noemulatedsd

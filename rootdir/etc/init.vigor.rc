@@ -1,6 +1,6 @@
 import init.vigor.usb.rc
 
-on early-init
+on init
     #External storage directories
     mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
     mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
@@ -70,7 +70,6 @@ on early-init
     # Force loading of modem and Q6 images
     write /dev/smd_pkt_loopback 1
 
-on init
     mkdir /devlog 0700 root root
 
     # for Invense MPU3050
