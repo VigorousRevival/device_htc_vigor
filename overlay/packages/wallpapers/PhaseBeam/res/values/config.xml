@@ -17,6 +17,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- Vigor is not powerful enough to handle horizontal scrolling without lag -->
+	<!-- not supported in evervolv
     <bool name="scrolling_enabled">false</bool>
-
+	-->
 </resources>
