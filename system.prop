@@ -6,6 +6,7 @@ ro.sf.lcd_density=320
 
 # RIL properties
 # cm props
+ro.telephony.ril_class=HTCVigorQualcommRIL
 mobiledata.interfaces = rmnet0,rmnet_sdio0
 ro.telephony.default_network = 8
 telephony.lteOnCdmaDevice = 1
