@@ -155,8 +155,9 @@ persist.thermal.monitor = true
 ro.modem.load.release_key = true
 
 # UMS
-persist.sys.usb.config = mass_storage,adb
-ro.vold.umsdirtyratio=50
+persist.sys.usb.config = mtp,adb
+ro.vold.umsdirtyratio=40
+
 
 # Scrolling Tweaks
 windowsmgr.max_events_per_sec=180
