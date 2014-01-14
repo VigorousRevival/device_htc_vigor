@@ -4,7 +4,7 @@ $(call inherit-product, vendor/ev/config/cdma.mk)
 
 # Inherit some common evervolv stuff.
 $(call inherit-product, vendor/ev/config/common_full_phone.mk)
-
+$(call inherit-product, vendor/ev/product/lite_base_telephony.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/htc/vigor/vigor.mk)
