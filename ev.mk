@@ -27,5 +27,10 @@ PRODUCT_MANUFACTURER := HTC
 PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=htc_vigor BUILD_ID=IML74K BUILD_FINGERPRINT="verizon_wwe/htc_vigor/vigor:4.0.3/IML74K/570011.14:user/release-keys" PRIVATE_BUILD_DESC="4.05.605.14 CL570011 release-keys"
 
 # Set up the product codename, build version & MOTD.
-PRODUCT_CODENAME := kitkat
+PRODUCT_CODENAME := $(shell date +%Y%m%d)-kitkat
 PRODUCT_VERSION_DEVICE_SPECIFIC := b1
+
+PRODUCT_PACKAGES += \
+    CarHome2.2 \
+    CarhomeLauncher
+
