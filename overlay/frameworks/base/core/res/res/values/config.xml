@@ -197,7 +197,7 @@
 
     <!-- Component name of the default wallpaper. This will be ImageWallpaper if not
          specified -->
-    <string name="default_wallpaper_component">com.android.phasebeam/.PhaseBeamWallpaper</string>
+<!--    <string name="default_wallpaper_component">com.android.phasebeam/.PhaseBeamWallpaper</string> -->
 
     <!-- We dont have different firmware for wifi modes, prevent reloading it -->
 <!--    <bool name="config_wifi_ap_firmware_reload">false</bool> -->
