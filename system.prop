@@ -10,7 +10,6 @@ ril.subscription.types=NV,RUIM
 ro.telephony.ril_class=HTCVigorQualcommRIL
 mobiledata.interfaces = rmnet0,rmnet_sdio0
 ro.telephony.default_network = 8
-telephony.lteOnCdmaDevice = 1
 
 # RIL properties
 rild.libpath=/system/lib/libril-qc-qmi-1.so
