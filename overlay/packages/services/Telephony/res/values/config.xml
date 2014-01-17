@@ -30,6 +30,9 @@
          in operator specific resource directories or device specific overlays. -->
     <bool name="config_apn_expand" translatable="false">true</bool>
 
+    <!-- Flag indicating if the phone is a world phone -->
+    <bool name="world_phone">true</bool>
+
     <!-- Show enabled lte option for lte device -->
     <bool name="config_enabled_lte" translatable="false">true</bool>
 
