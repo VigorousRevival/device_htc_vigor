@@ -9,6 +9,9 @@ $(call inherit-product, vendor/ev/product/lite_base_telephony.mk)
 # Inherit device configuration
 $(call inherit-product, device/htc/vigor/vigor.mk)
 
+# Use Java 1.7
+EXPERIMENTAL_USE_JAVA7 := true
+
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
