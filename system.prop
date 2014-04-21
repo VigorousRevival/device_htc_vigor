@@ -10,6 +10,7 @@ ril.subscription.types=NV,RUIM
 ro.telephony.ril_class=HTCVigorQualcommRIL
 mobiledata.interfaces = rmnet0,rmnet_sdio0
 ro.telephony.default_network = 8
+telephony.lteOnCdmaDevice = 1
 
 # RIL properties
 rild.libpath=/system/lib/libril-qc-qmi-1.so
@@ -156,6 +157,7 @@ ro.modem.load.release_key = true
 
 # UMS
 persist.sys.usb.config = mtp,adb
+persist.force.usb.config = true
 ro.vold.umsdirtyratio=40
 
 
