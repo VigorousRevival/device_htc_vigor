@@ -1,16 +1,17 @@
 # Android fstab file.
 #<src>			<mnt_point>	<type>	<mnt_flags>						<fs_mgr_flags>
 # load these in early-init instead
-#/dev/block/mmcblk0p17	/vendor/firmware/misc	vfat	ro,shortname=lower				wait
-#/dev/block/mmcblk0p21	/vendor/firmware/adsp	vfat	ro,shortname=lower				wait
-#/dev/block/mmcblk0p18  /vendor/firmware/misc_mdm   vfat    ro,shortname=lower                          wait
+/dev/block/platform/msm_sdcc.1/by-name/radio	/vendor/firmware/misc		vfat	ro,shortname=lower				wait
+/dev/block/platform/msm_sdcc.1/by-name/adsp		/vendor/firmware/adsp		vfat	ro,shortname=lower				wait
+/dev/block/platform/msm_sdcc.1/by-name/mdm9k	/vendor/firmware/misc_mdm   vfat    ro,shortname=lower              wait
 
-/dev/block/mmcblk0p22	/boot		emmc	defaults						recovery
-/dev/block/mmcblk0p23	/recovery	emmc	defaults						recovery
-/dev/block/mmcblk0p30	/devlog		ext4	noatime,nosuid,nodev,barrier=0				wait
-/dev/block/mmcblk0p29	/system		ext4	rw,noatime,barrier=0					wait
-/dev/block/mmcblk0p36	/cache		ext4	noatime,nosuid,nodev,barrier=0				wait
-/dev/block/mmcblk0p35	/data		ext4	noatime,nosuid,nodev,noauto_da_alloc,barrier=0		wait,encryptable=footer,length=-16384
+/dev/block/platform/msm_sdcc.1/by-name/boot		/boot						emmc	defaults						recovery
+/dev/block/platform/msm_sdcc.1/by-name/recovery	/recovery					emmc	defaults						recovery
+/dev/block/platform/msm_sdcc.1/by-name/misc		/misc                       emmc    defaults                		defaults
+/dev/block/platform/msm_sdcc.1/by-name/devlog	/devlog						ext4	noatime,nosuid,nodev,barrier=0,data=ordered,noauto_da_alloc,journal_async_commit,errors=panic   wait,encryptable=/dev/block/platform/msm_sdcc.1/by-name/extra
+/dev/block/platform/msm_sdcc.1/by-name/system	/system						ext4	rw,noatime,barrier=0			wait
+/dev/block/platform/msm_sdcc.1/by-name/cache	/cache						ext4	noatime,nosuid,nodev,barrier=0,data=ordered,noauto_da_alloc,journal_async_commit,errors=panic   wait
+/dev/block/platform/msm_sdcc.1/by-name/userdata	/data						ext4	noatime,nosuid,nodev,barrier=0,data=ordered,noauto_da_alloc,journal_async_commit,errors=panic	wait,encryptable=footer,length=-16384
 
 # SD Card
 /devices/platform/msm_sdcc.1/mmc_host/mmc0*	auto	auto	defaults		voldmanaged=sdcard0:38,nonremovable,noemulatedsd

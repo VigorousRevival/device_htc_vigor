@@ -31,12 +31,12 @@ on init
     mkdir /vendor/firmware/adsp 0771 system system
     mkdir /vendor/firmware/misc_mdm 0771 system system
 
-    wait /dev/block/mmcblk0p17
-    wait /dev/block/mmcblk0p21
-    wait /dev/block/mmcblk0p18
-    mount vfat /dev/block/mmcblk0p17 /vendor/firmware/misc ro shortname=lower
-    mount vfat /dev/block/mmcblk0p21 /vendor/firmware/adsp ro shortname=lower
-    mount vfat /dev/block/mmcblk0p18 /vendor/firmware/misc_mdm ro shortname=lower
+    #wait /dev/block/platform/msm_sdcc.1/by-name/radio
+    #wait /dev/block/platform/msm_sdcc.1/by-name/mdm9k
+    #wait /dev/block/platform/msm_sdcc.1/by-name/adsp
+    #mount vfat /dev/block/platform/msm_sdcc.1/by-name/radio /vendor/firmware/misc wait ro shortname=lower
+    #mount vfat /dev/block/platform/msm_sdcc.1/by-name/mdm9k /vendor/firmware/misc_mdm wait ro shortname=lower
+    #mount vfat /dev/block/platform/msm_sdcc.1/by-name/adsp /vendor/firmware/adsp wait ro shortname=lower
 
     symlink /vendor/firmware/adsp/q6.b09 /vendor/firmware/q6.b09
     symlink /vendor/firmware/adsp/q6.b08 /vendor/firmware/q6.b08
@@ -88,7 +88,7 @@ on init
     # Vibrator
     chown system system /sys/class/timed_output/vibrator/voltage_level
 
-on emmc-fs
+on fs
     # mount all mmc partitions
     mount_all /fstab.vigor
 

@@ -1,3 +1,7 @@
+on init
+	export PATH /sbin
+	export LD_LIBRARY_PATH .:/sbin
+ 
 on boot
     start chargeled
 
