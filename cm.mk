@@ -1,5 +1,5 @@
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
-$(call inherit-product, device/htc/vigor/vigor.mk)
+$(call inherit-product, device/htc/vigor/full_vigor.mk)
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1280

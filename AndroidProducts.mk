@@ -18,4 +18,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/vigor.mk
+    $(LOCAL_DIR)/device.mk
