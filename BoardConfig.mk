@@ -1,4 +1,4 @@
-# Copyright (C) 2009 The Android Open Source Project
+# Copyright (C) 2009-2016 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,12 +24,23 @@
 # variant, so that it gets overwritten by the parent (which goes
 # against the traditional rules of inheritance).
 
-# inherit from common msm8660
--include device/htc/msm8660-common/BoardConfigCommon.mk
+TARGET_SPECIFIC_HEADER_PATH := device/htc/vigor/include
 
 # Bootloader
+BOARD_VENDOR := htc
 TARGET_BOOTLOADER_BOARD_NAME := vigor
 BOARD_WANTS_EMMC_BOOT := true
+TARGET_NO_BOOTLOADER := true
+
+# Platform
+TARGET_BOARD_PLATFORM := msm8660
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
+
+# Rom Flags
+#TARGET_GCC_VERSION_KERNEL := 4.7
+#BOARD_USES_LEGACY_MMAP := true
+#TARGET_NEEDS_NON_PIE_SUPPORT := true
+#TARGET_NEEDS_PRELINK_SUPPORT := true
 
 # Kernel
 BOARD_KERNEL_BASE := 0x48800000
@@ -37,9 +48,52 @@ BOARD_KERNEL_PAGE_SIZE := 2048
 BOARD_KERNEL_CMDLINE := console=ttyHSL3 androidboot.hardware=vigor no_console_suspend=1 androidboot.selinux=permissive
 TARGET_KERNEL_VERSION := 3.0
 TARGET_KERNEL_CONFIG := vigor_aosp_defconfig
-TARGET_KERNEL_SOURCE := kernel/htc/vigor-$(TARGET_KERNEL_VERSION)
+TARGET_KERNEL_SOURCE := kernel/htc/vigor-3.0
+#TARGET_USES_BLOCK_BASED_OTA := false
+
+# Architecture
+TARGET_CPU_VARIANT := scorpion
+ARCH_ARM_HAVE_ARMV7A := true
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_ARCH := arm
+TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_CPU_SMP := true
+TARGET_ENABLE_AV_ENHANCEMENTS := true
+
+# Qcom Flags
+COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
+BOARD_USES_LEGACY_QCOM_DISPLAY := true
+BOARD_USES_QCOM_HARDWARE := true
+TARGET_USES_QCOM_BSP := false
+QCOM_BSP_LEGACY := false
+
+# Fonts
+EXTENDED_FONT_FOOTPRINT := true
+
+# FB legacy
+BOARD_EGL_CFG := device/htc/vigor/configs/egl.cfg
+BOARD_EGL_NEEDS_LEGACY_FB := true
+BOARD_EGL_WORKAROUND_BUG_10194508 := true
+BOARD_EGL_NEEDS_FNW := true
+
+# Graphics
+TARGET_USES_ION := true
+COMMON_GLOBAL_CFLAGS += -DQCOM_NO_SECURE_PLAYBACK -DREFRESH_RATE=60 -DHTC_RGBA_8888_OFFSET
+USE_OPENGL_RENDERER := true
+TARGET_NO_HW_VSYNC := true
+TARGET_DOESNT_USE_FENCE_SYNC := true
+TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
+TARGET_DISPLAY_INSECURE_MM_HEAP := true
+BOARD_USE_MHEAP_SCREENSHOT := true
+TARGET_USES_POST_PROCESSING := true
+TARGET_USES_C2D_COMPOSITION := true
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 
 # Boot animation
+TARGET_BOOTANIMATION_PRELOAD := true
+TARGET_BOOTANIMATION_TEXTURE_CACHE := false
+TARGET_BOOTANIMATION_USE_RGB565 := true
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
 
@@ -51,9 +105,30 @@ BOARD_RIL_NO_CELLINFOLIST:=true
 COMMON_GLOBAL_CFLAGS += -DHTCLOG
 
 # Audio
+COMMON_GLOBAL_CFLAGS += -DHTC_ACOUSTIC_AUDIO -DLEGACY_QCOM_VOICE -DQCOM_ACDB_ENABLED
+BOARD_USES_LEGACY_ALSA_AUDIO := true
+BOARD_QCOM_TUNNEL_LPA_ENABLED := false
+BOARD_QCOM_VOIP_ENABLED := true
 TARGET_QCOM_AUDIO_VARIANT := caf
 
+# Bluetooth
+BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_BCM := true
+BOARD_BLUEDROID_VENDOR_CONF := device/htc/vigor/bluetooth/vnd_msm8660.txt
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/htc/vigor/bluetooth/include
+
+# Camera
+BOARD_USES_QCOM_LEGACY_CAM_PARAMS := true
+BOARD_USES_PMEM_CAMERA := true
+BOARD_USES_PMEM_ADSP := true
+COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB -DNO_UPDATE_PREVIEW
+BOARD_HAVE_HTC_FFC := true
+BOARD_NEEDS_MEMORYHEAPPMEM := true
+TARGET_DISABLE_ARM_PIE := true
+
 # GPS
+BOARD_USES_QCOM_GPS := true
+BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 BOARD_USES_OLD_QC_GPS := true
 
 # WiFi
@@ -69,6 +144,24 @@ WIFI_DRIVER_FW_PATH_P2P := "/system/vendor/firmware/fw_bcmdhd_p2p.bin"
 WIFI_DRIVER_FW_PATH_AP := "/system/vendor/firmware/fw_bcmdhd_apsta.bin"
 BOARD_WLAN_DEVICE_REV            := bcm4330_b2
 BOARD_LEGACY_NL80211_STA_EVENTS := false
+
+# Sensors
+COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
+
+# Lights
+# legacy LIBLIGHT naming
+TARGET_PROVIDES_LIBLIGHT := true
+TARGET_PROVIDES_LIBLIGHTS := true
+
+# Power
+TARGET_USES_CM_POWERHAL := true
+
+# Webkit
+ENABLE_WEBGL := true
+TARGET_FORCE_CPU_UPLOAD := true
+
+# Hardware tunables
+BOARD_HARDWARE_CLASS := device/htc/vigor/cmhw/
 
 # Filesystem
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -100,3 +193,6 @@ TW_INCLUDE_JB_CRYPTO := true
 TW_NO_SCREEN_BLANK := true
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 TW_HTC_LED := true
+
+# SELinux
+-include device/qcom/sepolicy/sepolicy.mk
