@@ -157,6 +157,34 @@ TARGET_FORCE_CPU_UPLOAD := true
 # Hardware tunables
 BOARD_HARDWARE_CLASS := device/htc/vigor/cmhw/
 
+# SELinux
+BOARD_SEPOLICY_DIRS += \
+    device/htc/vigor/sepolicy
+
+BOARD_SEPOLICY_UNION += \
+    app.te \
+    bluetooth.te \
+    device.te \
+    domain.te \
+    drmserver.te \
+    file_contexts \
+    file.te \
+    hci_init.te \
+    healthd.te \
+    init.te \
+    init_shell.te \
+    keystore.te \
+    kickstart.te \
+    mediaserver.te \
+    rild.te \
+    surfaceflinger.te \
+    system.te \
+    ueventd.te \
+    untrusted_app.te \
+    vold.te \
+    wpa.te \
+    wpa_socket.te
+
 # Filesystem
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
@@ -187,6 +215,3 @@ TW_INCLUDE_JB_CRYPTO := true
 TW_NO_SCREEN_BLANK := true
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 TW_HTC_LED := true
-
-# SELinux
--include device/qcom/sepolicy/sepolicy.mk
