@@ -188,8 +188,7 @@ PRODUCT_BOOT_JARS += \
 
 PRODUCT_PACKAGES += \
     camera.msm8660 \
-    libnetcmdiface \
-    libsurfaceflinger_client
+    libnetcmdiface
 
 # Media configuration
 PRODUCT_COPY_FILES += \
