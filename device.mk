@@ -14,10 +14,6 @@
 # limitations under the License.
 #
 
-# Netflix fix
-PRODUCT_COPY_FILES += \
-	vendor/cm/prebuilt/common/etc/init.d/98netflix:system/etc/init.d/98netflix
-
 # Qualcomm scripts
 PRODUCT_COPY_FILES += \
     device/htc/vigor/prebuilt/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh \
@@ -26,12 +22,10 @@ PRODUCT_COPY_FILES += \
 # Overlays
 DEVICE_PACKAGE_OVERLAYS := device/htc/vigor/overlay
 
-# The gps config appropriate for this device
-PRODUCT_COPY_FILES := device/htc/vigor/gps/gps.conf:system/etc/gps.conf
-
 # GPS
-PRODUCT_COPY_FILES += \
-    device/common/gps/gps.conf_US_SUPL:system/etc/gps.conf
+PRODUCT_COPY_FILES += device/common/gps/gps.conf_US:system/etc/gps.conf
+PRODUCT_PACKAGES += \
+    gps.vigor
 
 # Ramdisk
 PRODUCT_PACKAGES += \
@@ -111,7 +105,6 @@ PRODUCT_COPY_FILES += device/htc/vigor/dsp/AudioBTID.csv:system/etc/AudioBTID.cs
 PRODUCT_PACKAGES += \
     hcitool \
     hciconfig \
-    gps.vigor \
     lights.vigor \
     Stk \
     FileManager
@@ -196,7 +189,6 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_ffmpeg.xml:system/etc/media_codecs_ffmpeg.xml \
     device/htc/vigor/configs/media_profiles.xml:system/etc/media_profiles.xml
 
 
