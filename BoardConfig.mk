@@ -163,27 +163,36 @@ BOARD_SEPOLICY_DIRS += \
 
 BOARD_SEPOLICY_UNION += \
     app.te \
-    bluetooth.te \
+    bootanim.te \
     device.te \
     domain.te \
     drmserver.te \
-    file_contexts \
     file.te \
-    hci_init.te \
+    file_contexts \
     healthd.te \
     init.te \
+    gamma_dev.te \
+    genfs_contexts \
     init_shell.te \
-    keystore.te \
-    kickstart.te \
+    kernel.te \
+    keypad_dev.te \
+    macloader.te \
     mediaserver.te \
+    orientationd.te \
+    panel_dev.te \
+    platform_app.te \
+    power_dev.te \
+    property_contexts \
+    recovery.te \
     rild.te \
     surfaceflinger.te \
-    system.te \
+    system_app.te \
+    system_server.te \
     ueventd.te \
     untrusted_app.te \
     vold.te \
-    wpa.te \
-    wpa_socket.te
+    wpa_socket.te \
+    wpa.te
 
 # Filesystem
 TARGET_USERIMAGES_USE_EXT4 := true
