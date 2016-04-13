@@ -35,10 +35,6 @@ PRODUCT_PACKAGES += \
     ueventd.vigor.rc \
     remount.vigor
 
-# WiFi
-PRODUCT_COPY_FILES += \
-    device/htc/vigor/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
-
 PRODUCT_PACKAGES += \
     dhcpcd.conf \
     hostapd \
